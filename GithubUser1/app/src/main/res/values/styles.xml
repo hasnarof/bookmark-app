@@ -1,0 +1,7 @@
+<resources>
+
+<style name="FontNunitoSans">
+    <item name="fontFamily">@font/nunito_sans</item>
+</style>
+
+</resources>
