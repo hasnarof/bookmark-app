@@ -1,6 +1,5 @@
-package com.dicoding.picodiploma.githubuser
+package com.hasnarof.githubuser.ui.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,30 +7,36 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.hasnarof.githubuser.R
+import com.hasnarof.githubuser.domain.models.User
 
-class ListUserAdapter(private val listUser: ArrayList<User>
+class ListUserAdapter(private val listUser: List<User>
                       ): RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
+        val view: View = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_row_user, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (username, name, location, repository, company, followers, following, avatar) = listUser[position]
-        holder.tvName.text = name
+        val (username, avatarUrl, followersUrl, followingUrl) = listUser[position]
+        holder.tvName.text = username
         holder.tvUsername.text = "@${username}"
-        holder.imgPhoto.setImageResource(avatar)
 
         Glide.with(holder.itemView.context)
-            .load(avatar) // URL Gambar
+            .load(avatarUrl) // URL Gambar
             .circleCrop() // Mengubah image menjadi lingkaran
             .into(holder.imgPhoto) // imageView mana yang akan diterapkan
 
-        holder.itemView.setOnClickListener { v ->
-            val intent = Intent(v.context, UserDetailActivity::class.java)
-            intent.putExtra(UserDetailActivity.EXTRA_PERSON, listUser[position])
-            v.context.startActivity(intent)
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
         }
 
     }
@@ -46,6 +51,10 @@ class ListUserAdapter(private val listUser: ArrayList<User>
         var tvUsername: TextView = itemView.findViewById(R.id.tv_item_username)
 
 
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: User)
     }
 
 

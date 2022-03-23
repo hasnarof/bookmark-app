@@ -1,7 +1,8 @@
 <resources>
     <!-- Other string resources-->
 
-    <string name="app_name">MyRecyclerView</string>
+    <string name="app_name">Github User\'s Search</string>
+    <string name="search_hint">Input username</string>
 
     <string name="heroes_name">Nama Pahlawan</string>
     <string name="description">Deskripsi</string>
