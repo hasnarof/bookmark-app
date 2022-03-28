@@ -52,6 +52,10 @@ class UserDetailFollowFragment(private val tabType: String, private val username
                 setUsersData(it)
             }
         }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
     }
 
     private fun setUsersData(userList: List<User>) {
@@ -64,6 +68,10 @@ class UserDetailFollowFragment(private val tabType: String, private val username
 
         val listUserFollowAdapter = ListUserFollowAdapter(userList)
         binding.rvUsers.adapter = listUserFollowAdapter
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 }

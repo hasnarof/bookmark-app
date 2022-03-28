@@ -43,7 +43,7 @@ class UserDetailFragment : Fragment() {
             tab.text = TAB_TITLES[position]
         }.attach()
 
-        requireActivity().setTitle("Detail User");
+        requireActivity().title = "Detail User"
 
         return view
     }

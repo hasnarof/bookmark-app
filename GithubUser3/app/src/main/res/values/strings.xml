@@ -1,0 +1,16 @@
+<resources>
+    <!-- Other string resources-->
+
+    <string name="app_name">Github User\'s Search</string>
+    <string name="search_hint">Input username</string>
+
+    <string name="heroes_name">Nama Pahlawan</string>
+    <string name="description">Deskripsi</string>
+
+    <string name="followers_not_found">Followers not found.</string>
+    <string name="following_not_found">Following not found.</string>
+
+
+</resources>
+
+

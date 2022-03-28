@@ -137,7 +137,9 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
+        android:minHeight="400dp"
         android:layout_height="wrap_content"
+        android:background="@color/purple_200"
         app:layout_constraintTop_toBottomOf="@+id/tabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
