@@ -8,8 +8,10 @@
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.16510416666666666" />
         <entry key="app/src/main/res/layout/activity_user_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21240942028985507" />
-        <entry key="app/src/main/res/layout/fragment_user_detail.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_user_detail.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_user_detail_follow.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_user_favorites.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_user_followers.xml" value="1.3016740731313718" />
         <entry key="app/src/main/res/layout/fragment_user_followers_list.xml" value="0.26051177978515627" />
         <entry key="app/src/main/res/layout/item_row_user.xml" value="0.5143231820369113" />

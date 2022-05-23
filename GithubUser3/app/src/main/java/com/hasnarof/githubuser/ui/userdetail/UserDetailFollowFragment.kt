@@ -5,19 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hasnarof.githubuser.R
 import com.hasnarof.githubuser.databinding.FragmentUserDetailFollowBinding
 import com.hasnarof.githubuser.domain.models.User
+import com.hasnarof.githubuser.helper.ViewModelFactory
 import com.hasnarof.githubuser.ui.adapters.ListUserFollowAdapter
 
-class UserDetailFollowFragment(private val tabTitle: String, private val username: String?) : Fragment() {
+class UserDetailFollowFragment() : Fragment() {
 
     private var _binding: FragmentUserDetailFollowBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<UserDetailViewModel>()
+
+    private lateinit var tabTitle: String
+    private lateinit var username: String
 
     companion object {
         private const val TAG = "UserDetailFollowFragment"
@@ -40,6 +43,12 @@ class UserDetailFollowFragment(private val tabTitle: String, private val usernam
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val factory = ViewModelFactory(requireActivity().application)
+        val viewModel = ViewModelProvider(this, factory).get(UserDetailViewModel::class.java)
+
+        tabTitle = arguments?.getString(UserDetailFragment.EXTRA_TAB_TITLE).toString();
+        username = arguments?.getString(UserDetailFragment.EXTRA_USERNAME).toString()
 
         if (tabTitle == UserDetailFragment.TAB_TITLE_FOLLOWERS) {
             viewModel.getFollowers(username)

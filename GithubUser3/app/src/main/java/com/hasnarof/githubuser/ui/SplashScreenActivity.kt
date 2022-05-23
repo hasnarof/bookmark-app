@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.hasnarof.githubuser.R
+import com.hasnarof.githubuser.ui.main.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 

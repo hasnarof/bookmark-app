@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hasnarof.githubuser.R
-import com.hasnarof.githubuser.domain.models.User
+import com.hasnarof.githubuser.domain.models.UserFavorite
 
-class ListUserAdapter(private val listUser: List<User>
-                      ): RecyclerView.Adapter<ListUserAdapter.ListViewHolder>() {
+class ListUserFavoriteAdapter(private val listUser: List<UserFavorite>
+): RecyclerView.Adapter<ListUserFavoriteAdapter.ListViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -26,9 +26,8 @@ class ListUserAdapter(private val listUser: List<User>
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (username, avatarUrl) = listUser[position]
-        holder.tvName.text = username
-        holder.tvUsername.text = "@${username}"
+        val (id, username, avatarUrl) = listUser[position]
+        holder.tvName.text = "@${username}"
 
         Glide.with(holder.itemView.context)
             .load(avatarUrl)
@@ -38,6 +37,7 @@ class ListUserAdapter(private val listUser: List<User>
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -51,6 +51,8 @@ class ListUserAdapter(private val listUser: List<User>
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: User)
+        fun onItemClicked(data: UserFavorite)
     }
+
+
 }

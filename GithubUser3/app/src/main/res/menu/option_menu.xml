@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/search"
-        android:icon="@drawable/ic_baseline_search_white_24"
-        android:title="Search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|always"
-        />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:menuCategory="container"
+        >
+        <item android:id="@+id/userFavoritesFragment"
+            android:title="Favorites"
+             />
+        <item android:id="@+id/settingsFragment"
+            android:title="Settings" />
+    </group>
 
 </menu>

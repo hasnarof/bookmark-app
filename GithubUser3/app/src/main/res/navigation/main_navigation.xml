@@ -7,16 +7,36 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.hasnarof.githubuser.ui.home.HomeFragment"
-        android:label="HomeFragment"
+        android:label="Github User's Search"
         tools:layout="@layout/fragment_home"
         >
         <action
             android:id="@+id/action_homeFragment_to_userDetailFragment"
             app:destination="@id/userDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userFavoritesFragment"
+            app:destination="@id/userFavoritesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
         android:name="com.hasnarof.githubuser.ui.userdetail.UserDetailFragment"
-        android:label="fragment_user_detail"
+        android:label="Detail User"
         tools:layout="@layout/fragment_user_detail" />
+    <fragment
+        android:id="@+id/userFavoritesFragment"
+        android:name="com.hasnarof.githubuser.ui.userfavorites.UserFavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_user_favorites" >
+        <action
+            android:id="@+id/action_userFavoritesFragment_to_userDetailFragment"
+            app:destination="@id/userDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.hasnarof.githubuser.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

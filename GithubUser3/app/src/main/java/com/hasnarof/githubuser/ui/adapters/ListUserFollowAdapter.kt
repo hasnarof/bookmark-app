@@ -22,13 +22,13 @@ class ListUserFollowAdapter(private val listUser: List<User>): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (username, avatarUrl, followersUrl, followingUrl) = listUser[position]
+        val (username, avatarUrl) = listUser[position]
         holder.tvUsername.text = "@${username}"
 
         Glide.with(holder.itemView.context)
-            .load(avatarUrl) // URL Gambar
-            .circleCrop() // Mengubah image menjadi lingkaran
-            .into(holder.imgPhoto) // imageView mana yang akan diterapkan
+            .load(avatarUrl)
+            .circleCrop()
+            .into(holder.imgPhoto)
     }
 
     override fun getItemCount(): Int {

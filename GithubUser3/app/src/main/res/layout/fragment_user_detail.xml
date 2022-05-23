@@ -7,6 +7,29 @@
     android:padding="16dp"
     tools:context=".ui.userdetail.UserDetailFragment">
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#D0D0D0"
+        app:layout_constraintBottom_toBottomOf="@+id/flexboxLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:tag="Not Saved"
+        android:contentDescription="Save"
+        android:src="@drawable/ic_baseline_star_white_24"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <ImageView
         android:id="@+id/img_item_photo"
         android:layout_width="100dp"
@@ -87,6 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:paddingBottom="8dp"
         app:alignItems="center"
         app:flexWrap="wrap"
         app:justifyContent="space_around"
@@ -127,7 +151,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="8dp"
         android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

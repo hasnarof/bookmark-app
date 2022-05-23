@@ -1,13 +1,12 @@
 package com.hasnarof.githubuser.ui.home
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hasnarof.githubuser.R
@@ -36,6 +35,20 @@ class HomeFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        val searchView = binding.search
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.searchUser(query)
+                searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+        })
+
         val layoutManager = LinearLayoutManager(activity)
         binding.rvUsers.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(activity, layoutManager.orientation)
@@ -54,28 +67,6 @@ class HomeFragment : Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.option_menu, menu)
-
-        val searchManager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search).actionView as SearchView
-
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
-        searchView.queryHint = resources.getString(R.string.search_hint)
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.searchUser(query)
-                searchView.clearFocus()
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
     }
 
     private fun setUsersData(userList: List<User>) {
@@ -100,6 +91,15 @@ class HomeFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.option_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(findNavController()) || super.onOptionsItemSelected(item)
     }
 
     override fun onDestroy() {

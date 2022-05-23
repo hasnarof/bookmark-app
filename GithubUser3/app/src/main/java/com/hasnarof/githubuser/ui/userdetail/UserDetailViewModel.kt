@@ -1,6 +1,6 @@
 package com.hasnarof.githubuser.ui.userdetail
 
-import android.annotation.SuppressLint
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,11 +11,14 @@ import com.hasnarof.githubuser.data.network.response.FollowingResponse
 import com.hasnarof.githubuser.data.network.response.UserDetailResponse
 import com.hasnarof.githubuser.domain.models.User
 import com.hasnarof.githubuser.domain.models.UserDetail
+import com.hasnarof.githubuser.domain.models.UserFavorite
+import com.hasnarof.githubuser.repository.UserFavoriteRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserDetailViewModel : ViewModel() {
+
+class UserDetailViewModel(application: Application) : ViewModel() {
 
     private val _user = MutableLiveData<UserDetail>()
     val user: LiveData<UserDetail> = _user
@@ -28,6 +31,9 @@ class UserDetailViewModel : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
+
+    private val mUserFavoriteRepository: UserFavoriteRepository = UserFavoriteRepository(application)
+
 
     companion object {
         private const val TAG = "UserDetailViewModel"
@@ -125,6 +131,20 @@ class UserDetailViewModel : ViewModel() {
                 Log.e(UserDetailViewModel.TAG, "onFailure: following ${t.message.toString()}")
             }
         })
+    }
+
+    fun getAllUserFavorites(): LiveData<List<UserFavorite>> = mUserFavoriteRepository.getAllUserFavorites()
+
+    fun isFavorite(username: String?): LiveData<List<UserFavorite>> {
+        return mUserFavoriteRepository.findUserFavorite(username)
+    }
+
+    fun insertUserFavorite(userFavorite: UserFavorite) {
+        mUserFavoriteRepository.insert(userFavorite)
+    }
+
+    fun deleteUserFavorite(username: String?) {
+        mUserFavoriteRepository.delete(username)
     }
 
 }

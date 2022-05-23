@@ -4,18 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:iconifiedByDefault="false"
-        app:queryHint="Search username" >
-
-    </androidx.appcompat.widget.SearchView>
-
+    tools:context=".ui.userfavorites.UserFavoritesFragment">
 
     <TextView
         android:id="@+id/tv_search_description"
@@ -23,8 +12,11 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="User not found."
+        android:visibility="gone"
         />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
         android:layout_width="match_parent"
@@ -34,7 +26,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_search_description" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
