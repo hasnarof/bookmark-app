@@ -3,7 +3,7 @@
 This is a bookmark app which can bookmark github users. This project is to complete Dicoding "Fundamental Android Application" course's submissions. There is 3 assignments:
 
 **1st Assignment**
-- Show list of github users with RecyclerView.
+- Show list of github users with RecyclerView
 - If a certain user clicked, show detail user page
 - Use ConstraintLayout
 - Use Parcelable as interface of data object passing between activities
@@ -20,12 +20,12 @@ This is a bookmark app which can bookmark github users. This project is to compl
 
 ## Screenshots
 <p float="left">
-  <img src="./screenshots/1.png" width="200" />
-  <img src="./screenshots/2.png" width="200" /> 
-  <img src="./screenshots/3.png" width="200" />
+  <img src="./screenshots/1.png" width="300" />
+  <img src="./screenshots/2.png" width="300" /> 
+  <img src="./screenshots/3.png" width="300" />
 </p>
 
 <p float="left">
-  <img src="./screenshots/4.png" width="200" />
-  <img src="./screenshots/5.png" width="200" /> 
+  <img src="./screenshots/4.png" width="300" />
+  <img src="./screenshots/5.png" width="300" /> 
 </p>
