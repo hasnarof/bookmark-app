@@ -5,6 +5,9 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+def Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
 android {
     compileSdk 32
 
@@ -16,7 +19,7 @@ android {
         versionName "1.0"
 
         buildConfigField("String", "BASE_URL_API", '"https://api.github.com/"')
-        buildConfigField("String", "GITHUB_TOKEN", '"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"')
+        buildConfigField("String", "GITHUB_TOKEN", properties.getProperty("GITHUB_TOKEN", ""))
 
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
